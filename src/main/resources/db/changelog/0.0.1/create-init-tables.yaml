@@ -79,7 +79,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: sale_date
-                  type: DATE
+                  type: TIMESTAMP
                   constraints:
                     nullable: false
               - column:
