@@ -2,8 +2,10 @@ package com.wsd.ecommerce.repository;
 
 
 import com.wsd.ecommerce.dto.MaxSaleDayDTO;
+import com.wsd.ecommerce.dto.SaleItemDto;
 import com.wsd.ecommerce.model.Sale;
 import jakarta.persistence.Tuple;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,10 +23,8 @@ public interface SaleRepository extends JpaRepository<Sale, Long> {
             "WHERE sale_date BETWEEN :startDate AND :endDate GROUP BY saleDate ORDER BY totalAmount DESC LIMIT 1", nativeQuery = true)
     List<Tuple> findMaxSaleDayInRange(@Param("startDate") Timestamp startDate, @Param("endDate") Timestamp endDate);
 
-//    @Query("SELECT s.itemName, SUM(s.amount) FROM Sale s GROUP BY s.itemName ORDER BY SUM(s.amount) DESC")
-//    List<Object[]> findTopSellingItemsOfAllTime();
-//
-//    @Query("SELECT s.itemName, COUNT(s) FROM Sale s WHERE s.saleDate BETWEEN :startDate AND :endDate GROUP BY s.itemName ORDER BY COUNT(s) DESC")
-//    List<Object[]> findTopSellingItemsInLastMonth(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
+    @Query("SELECT new com.wsd.ecommerce.dto.SaleItemDto(s.item.id, i.name, SUM(s.amount)) FROM Sale s INNER JOIN s.item i GROUP BY s.item.id, i.name ORDER BY SUM(s.amount) DESC")
+    List<SaleItemDto> findTopSellingItemsOfAllTime(Pageable pageable);
+
 }
 
