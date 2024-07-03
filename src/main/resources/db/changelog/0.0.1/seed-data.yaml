@@ -1,0 +1,324 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1
+      author: saiful
+      changes:
+        - insert:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: "John Doe"
+              - column:
+                  name: email
+                  value: "john.doe@example.com"
+        - insert:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "Jane Smith"
+              - column:
+                  name: email
+                  value: "jane.smith@example.com"
+        - insert:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: "Alice Johnson"
+              - column:
+                  name: email
+                  value: "alice.johnson@example.com"
+        - insert:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: name
+                  value: "Bob Brown"
+              - column:
+                  name: email
+                  value: "bob.brown@example.com"
+        - insert:
+            tableName: customer
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: name
+                  value: "Charlie Davis"
+              - column:
+                  name: email
+                  value: "charlie.davis@example.com"
+
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: "Item 1"
+              - column:
+                  name: price
+                  value: 100.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "Item 2"
+              - column:
+                  name: price
+                  value: 150.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: name
+                  value: "Item 3"
+              - column:
+                  name: price
+                  value: 200.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: name
+                  value: "Item 4"
+              - column:
+                  name: price
+                  value: 250.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: name
+                  value: "Item 5"
+              - column:
+                  name: price
+                  value: 300.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: name
+                  value: "Item 6"
+              - column:
+                  name: price
+                  value: 350.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 7
+              - column:
+                  name: name
+                  value: "Item 7"
+              - column:
+                  name: price
+                  value: 400.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 8
+              - column:
+                  name: name
+                  value: "Item 8"
+              - column:
+                  name: price
+                  value: 450.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 9
+              - column:
+                  name: name
+                  value: "Item 9"
+              - column:
+                  name: price
+                  value: 500.0
+        - insert:
+            tableName: item
+            columns:
+              - column:
+                  name: id
+                  value: 10
+              - column:
+                  name: name
+                  value: "Item 10"
+              - column:
+                  name: price
+                  value: 550.0
+
+        - insert:
+            tableName: wishlist
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: customer_id
+                  value: 1
+              - column:
+                  name: item_id
+                  value: 1
+        - insert:
+            tableName: wishlist
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: customer_id
+                  value: 2
+              - column:
+                  name: item_id
+                  value: 2
+        - insert:
+            tableName: wishlist
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: customer_id
+                  value: 3
+              - column:
+                  name: item_id
+                  value: 3
+        - insert:
+            tableName: wishlist
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: customer_id
+                  value: 4
+              - column:
+                  name: item_id
+                  value: 4
+        - insert:
+            tableName: wishlist
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: customer_id
+                  value: 5
+              - column:
+                  name: item_id
+                  value: 5
+
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: sale_date
+                  value: "2023-07-01"
+              - column:
+                  name: amount
+                  value: 250.0
+              - column:
+                  name: item_id
+                  value: 1
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: sale_date
+                  value: "2023-07-02"
+              - column:
+                  name: amount
+                  value: 150.0
+              - column:
+                  name: item_id
+                  value: 2
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 3
+              - column:
+                  name: sale_date
+                  value: "2023-07-03"
+              - column:
+                  name: amount
+                  value: 250.0
+              - column:
+                  name: item_id
+                  value: 3
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 4
+              - column:
+                  name: sale_date
+                  value: "2023-07-01"
+              - column:
+                  name: amount
+                  value: 500.0
+              - column:
+                  name: item_id
+                  value: 4
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 5
+              - column:
+                  name: sale_date
+                  value: "2023-07-05"
+              - column:
+                  name: amount
+                  value: 500.0
+              - column:
+                  name: item_id
+                  value: 5
+

@@ -1,0 +1,25 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2
+      author: saiful
+      changes:
+        - addForeignKeyConstraint:
+            baseTableName: wishlist
+            baseColumnNames: customer_id
+            constraintName: fk_wishlist_customer
+            referencedTableName: customer
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: wishlist
+            baseColumnNames: item_id
+            constraintName: fk_wishlist_item
+            referencedTableName: item
+            referencedColumnNames: id
+
+        - addForeignKeyConstraint:
+            baseTableName: sale
+            baseColumnNames: item_id
+            constraintName: fk_sale_item
+            referencedTableName: item
+            referencedColumnNames: id

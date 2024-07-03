@@ -1,0 +1,7 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/0.0.1/create-init-tables.yaml
+  - include:
+      file: db/changelog/0.0.1/add-init-constraints.yaml
+  - include:
+      file: db/changelog/0.0.1/seed-data.yaml
