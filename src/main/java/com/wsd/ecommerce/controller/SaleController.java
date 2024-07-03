@@ -1,6 +1,7 @@
 package com.wsd.ecommerce.controller;
 
 import com.wsd.ecommerce.dto.MaxSaleDayDTO;
+import com.wsd.ecommerce.dto.SaleItemDto;
 import com.wsd.ecommerce.service.SaleService;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -35,4 +37,11 @@ public class SaleController {
 
         return new ResponseEntity<>(saleService.getMaxSaleDayInRange(startDate, endDate), HttpStatus.OK);
     }
+
+    @GetMapping("/sales/top5SellingItems")
+    public ResponseEntity<List<SaleItemDto>> getTop5SellingItems(){
+        return new ResponseEntity<>(saleService.getTopSellingItemsOfAllTime(), HttpStatus.OK);
+    }
+
+
 }
