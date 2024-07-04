@@ -1,6 +1,7 @@
 package com.wsd.ecommerce.service;
 
 import com.wsd.ecommerce.dto.MaxSaleDayDTO;
+import com.wsd.ecommerce.dto.SaleCountDTO;
 import com.wsd.ecommerce.dto.SaleItemDto;
 import com.wsd.ecommerce.repository.SaleRepository;
 import jakarta.persistence.Tuple;
@@ -10,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -55,6 +55,11 @@ public class SaleService {
     public List<SaleItemDto> getTopSellingItemsOfAllTime() {
         Pageable pageable = PageRequest.of(0, 5);
         return saleRepository.findTopSellingItemsOfAllTime(pageable);
+    }
+
+    public List<SaleCountDTO> getTopSellingItemsBySalesCount() {
+        Timestamp timestampOneMonthAgo = Timestamp.valueOf(LocalDateTime.now().minusMonths(1));
+        return saleRepository.findTopSellingItemsBySalesCountLastMonth(timestampOneMonthAgo);
     }
 }
 

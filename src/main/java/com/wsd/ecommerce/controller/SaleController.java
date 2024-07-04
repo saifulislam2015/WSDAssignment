@@ -1,6 +1,7 @@
 package com.wsd.ecommerce.controller;
 
 import com.wsd.ecommerce.dto.MaxSaleDayDTO;
+import com.wsd.ecommerce.dto.SaleCountDTO;
 import com.wsd.ecommerce.dto.SaleItemDto;
 import com.wsd.ecommerce.service.SaleService;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -41,6 +42,11 @@ public class SaleController {
     @GetMapping("/sales/top5SellingItems")
     public ResponseEntity<List<SaleItemDto>> getTop5SellingItems(){
         return new ResponseEntity<>(saleService.getTopSellingItemsOfAllTime(), HttpStatus.OK);
+    }
+
+    @GetMapping("/sales/top5SellingItemsBySalesCount")
+    public ResponseEntity<List<SaleCountDTO>> getTop5SellingItemsBySalesCount(){
+        return new ResponseEntity<>(saleService.getTopSellingItemsBySalesCount(), HttpStatus.OK);
     }
 
 

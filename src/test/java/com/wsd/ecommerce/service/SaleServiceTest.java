@@ -1,5 +1,6 @@
 package com.wsd.ecommerce.service;
 
+import com.wsd.ecommerce.dto.SaleCountDTO;
 import com.wsd.ecommerce.dto.SaleItemDto;
 import com.wsd.ecommerce.repository.SaleRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -13,11 +14,11 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class SaleServiceTest {
 
@@ -62,5 +63,22 @@ public class SaleServiceTest {
         List<SaleItemDto> topItems = saleService.getTopSellingItemsOfAllTime();
         assertEquals(expectedItems, topItems);
     }
+
+    @Test
+    public void testGetTopSellingItemsBySalesCount() {
+        List<SaleCountDTO> items = List.of(
+                new SaleCountDTO(1L, "Item1", 1000.0, 2L),
+                new SaleCountDTO(2L, "Item2", 900.0, 1L),
+                new SaleCountDTO(3L, "Item3", 800.0, 1L),
+                new SaleCountDTO(4L, "Item4", 700.0, 1L),
+                new SaleCountDTO(5L, "Item5", 600.0, 1L)
+        );
+        Timestamp timestampOneMonthAgo = Timestamp.valueOf(LocalDateTime.now().minusMonths(1));
+        when(saleRepository.findTopSellingItemsBySalesCountLastMonth(timestampOneMonthAgo)).thenReturn(items);
+
+        List<SaleCountDTO> topItems = saleService.getTopSellingItemsBySalesCount();
+        assertEquals(items, topItems);
+    }
+
 }
 

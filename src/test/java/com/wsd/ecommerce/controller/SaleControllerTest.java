@@ -1,6 +1,7 @@
 package com.wsd.ecommerce.controller;
 
 import com.wsd.ecommerce.dto.MaxSaleDayDTO;
+import com.wsd.ecommerce.dto.SaleCountDTO;
 import com.wsd.ecommerce.dto.SaleItemDto;
 import com.wsd.ecommerce.model.Item;
 import com.wsd.ecommerce.model.Sale;
@@ -122,6 +123,51 @@ public class SaleControllerTest {
 
         // Act and Assert
         mockMvc.perform(get("/sales/top5SellingItems")
+                        .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
+                .andExpect(jsonPath("$", hasSize(5)));
+    }
+
+    @Test
+    public void testGetTop5SellingItemsBySalesCount() throws Exception {
+        // Arrange: Mocking 10 Sale and Item entities
+        Item item1 = new Item(1L, "Item1", 100);
+        Item item2 = new Item(2L, "Item2", 110);
+        Item item3 = new Item(3L, "Item3", 120);
+        Item item4 = new Item(4L, "Item4", 130);
+        Item item5 = new Item(5L, "Item5", 140);
+        Item item6 = new Item(6L, "Item6", 150);
+        Item item7 = new Item(7L, "Item7", 160);
+        Item item8 = new Item(8L, "Item8", 170);
+        Item item9 = new Item(9L, "Item9", 180);
+        Item item10 = new Item(10L, "Item10", 190);
+
+        Sale sale1 = new Sale(1L, 1000.0, Timestamp.valueOf("2024-07-01 12:00:00"), item1);
+        Sale sale2 = new Sale(2L, 900.0, Timestamp.valueOf("2024-07-02 12:00:00"), item2);
+        Sale sale3 = new Sale(3L, 800.0, Timestamp.valueOf("2024-07-03 12:00:00"), item3);
+        Sale sale4 = new Sale(4L, 700.0, Timestamp.valueOf("2024-07-04 12:00:00"), item4);
+        Sale sale5 = new Sale(5L, 600.0, Timestamp.valueOf("2024-07-05 12:00:00"), item5);
+        Sale sale6 = new Sale(6L, 500.0, Timestamp.valueOf("2024-07-06 12:00:00"), item6);
+        Sale sale7 = new Sale(7L, 400.0, Timestamp.valueOf("2024-07-07 12:00:00"), item7);
+        Sale sale8 = new Sale(8L, 300.0, Timestamp.valueOf("2024-07-08 12:00:00"), item8);
+        Sale sale9 = new Sale(9L, 200.0, Timestamp.valueOf("2024-07-09 12:00:00"), item9);
+        Sale sale10 = new Sale(10L, 100.0, Timestamp.valueOf("2024-07-10 12:00:00"), item10);
+        Sale sale11 = new Sale(10L, 100.0, Timestamp.valueOf("2024-07-10 12:00:00"), item10);
+
+        // Mocking the SaleService to return the top 5 sales
+        List<SaleCountDTO> expectedItems = Arrays.asList(
+                new SaleCountDTO(10L, "Item10", 200.0, 2L),
+                new SaleCountDTO(1L, "Item1", 1000.0, 1L),
+                new SaleCountDTO(2L, "Item2", 900.0, 1L),
+                new SaleCountDTO(3L, "Item3", 800.0, 1L),
+                new SaleCountDTO(4L, "Item4", 700.0, 1L)
+        );
+
+        Mockito.when(saleService.getTopSellingItemsBySalesCount()).thenReturn(expectedItems);
+
+        // Act and Assert
+        mockMvc.perform(get("/sales/top5SellingItemsBySalesCount")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
