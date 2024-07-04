@@ -1,8 +1,7 @@
 package com.wsd.ecommerce.controller;
 
-import com.wsd.ecommerce.model.Customer;
-import com.wsd.ecommerce.model.Item;
-import com.wsd.ecommerce.model.Wishlist;
+import com.wsd.ecommerce.dto.CustomerWishlistDTO;
+import com.wsd.ecommerce.dto.ItemDTO;
 import com.wsd.ecommerce.service.CustomerService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -34,22 +33,19 @@ public class CustomerControllerTest {
     @Test
     public void testGetWishlist() throws Exception {
         // Mock data
-        Customer mockCustomer = new Customer(1L, "John Doe", "john.doe@gmail.com");
-        Item mockItem1 = new Item(1L,"Item 1", 200);
-        Item mockItem2 = new Item(2L,"Item 2", 100);
-        List<Wishlist> mockWishlist = new ArrayList<>();
-        mockWishlist.add(new Wishlist(1L, mockCustomer, mockItem1));
-        mockWishlist.add(new Wishlist(2L, mockCustomer, mockItem2));
+        List<ItemDTO> itemDTOS = new ArrayList<>();
+        itemDTOS.add(new ItemDTO(1L,"Item 1"));
+        itemDTOS.add(new ItemDTO(2L,"Item 2"));
+
+        CustomerWishlistDTO customerWishlistDTO = new CustomerWishlistDTO("John Doe", itemDTOS);
 
         // Mock service method
-        when(customerService.getWishlistByCustomerId(anyLong())).thenReturn(mockWishlist);
+        when(customerService.getWishlistByCustomerId(anyLong())).thenReturn(customerWishlistDTO);
 
         // Perform GET request and validate
         mockMvc.perform(MockMvcRequestBuilders.get("/customers/{customerId}/wishlist", 1L)
                         .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.jsonPath("$").isArray())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", org.hamcrest.Matchers.hasSize(2)));
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
 
