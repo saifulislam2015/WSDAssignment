@@ -1,5 +1,6 @@
 package com.wsd.ecommerce.controller;
 
+import com.wsd.ecommerce.dto.CustomerWishlistDTO;
 import com.wsd.ecommerce.model.Wishlist;
 import com.wsd.ecommerce.service.CustomerService;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public class CustomerController {
     }
 
     @GetMapping("/customers/{customerId}/wishlist")
-    public ResponseEntity<List<Wishlist>> getWishlist(@PathVariable Long customerId) {
+    public ResponseEntity<CustomerWishlistDTO> getWishlist(@PathVariable Long customerId) {
         return new ResponseEntity<>(customerService.getWishlistByCustomerId(customerId), HttpStatus.OK);
     }
 }

@@ -1,18 +1,13 @@
-package com.wsd.ecommerce.model;
+package com.wsd.ecommerce.dto;
 
-import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Item {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ItemDTO {
     private Long id;
     private String name;
-    private double price;
 }
