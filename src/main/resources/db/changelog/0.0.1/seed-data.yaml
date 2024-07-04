@@ -251,73 +251,157 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  value: 1
-              - column:
-                  name: sale_date
-                  value: "2023-07-01"
+                  value: 13
               - column:
                   name: amount
-                  value: 250.0
+                  value: 270
+              - column:
+                  name: sale_date
+                  valueDate: 2024-06-03T21:27:04.000000
               - column:
                   name: item_id
                   value: 1
+
         - insert:
             tableName: sale
             columns:
               - column:
                   name: id
-                  value: 2
-              - column:
-                  name: sale_date
-                  value: "2023-07-02"
+                  value: 7
               - column:
                   name: amount
-                  value: 150.0
+                  value: 250
+              - column:
+                  name: sale_date
+                  valueDate: 2024-07-03T15:32:33.000000
+              - column:
+                  name: item_id
+                  value: 1
+
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 14
+              - column:
+                  name: amount
+                  value: 310
+              - column:
+                  name: sale_date
+                  valueDate: 2024-06-25T21:27:09.000000
               - column:
                   name: item_id
                   value: 2
+
         - insert:
             tableName: sale
             columns:
               - column:
                   name: id
-                  value: 3
-              - column:
-                  name: sale_date
-                  value: "2023-07-03"
+                  value: 8
               - column:
                   name: amount
-                  value: 250.0
+                  value: 100
+              - column:
+                  name: sale_date
+                  valueDate: 2024-07-02T15:57:37.000000
+              - column:
+                  name: item_id
+                  value: 2
+
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 15
+              - column:
+                  name: amount
+                  value: 190
+              - column:
+                  name: sale_date
+                  valueDate: 2024-06-24T21:27:17.000000
               - column:
                   name: item_id
                   value: 3
+
         - insert:
             tableName: sale
             columns:
               - column:
                   name: id
-                  value: 4
-              - column:
-                  name: sale_date
-                  value: "2023-07-01"
+                  value: 9
               - column:
                   name: amount
-                  value: 500.0
+                  value: 100
+              - column:
+                  name: sale_date
+                  valueDate: 2024-06-30T21:25:08.000000
+              - column:
+                  name: item_id
+                  value: 3
+
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 10
+              - column:
+                  name: amount
+                  value: 200
+              - column:
+                  name: sale_date
+                  valueDate: 2024-06-28T21:26:41.000000
               - column:
                   name: item_id
                   value: 4
+
         - insert:
             tableName: sale
             columns:
               - column:
                   name: id
+                  value: 16
+              - column:
+                  name: amount
+                  value: 430
+              - column:
+                  name: sale_date
+                  valueDate: 2024-06-23T21:12:27.000000
+              - column:
+                  name: item_id
+                  value: 4
+
+        - insert:
+            tableName: sale
+            columns:
+              - column:
+                  name: id
+                  value: 6
+              - column:
+                  name: amount
+                  value: 100
+              - column:
+                  name: sale_date
+                  valueDate: 2024-07-03T15:28:12.000000
+              - column:
+                  name: item_id
                   value: 5
+
+        - insert:
+            tableName: sale
+            columns:
               - column:
-                  name: sale_date
-                  value: "2023-07-05"
+                  name: id
+                  value: 17
               - column:
                   name: amount
-                  value: 500.0
+                  value: 770
+              - column:
+                  name: sale_date
+                  valueDate: 2024-06-22T21:12:27.000000
               - column:
                   name: item_id
                   value: 5
